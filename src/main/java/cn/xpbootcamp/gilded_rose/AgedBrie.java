@@ -16,6 +16,10 @@ public class AgedBrie implements Item {
 
     @Override
     public int qualityAtDay(int day) {
-        return initialQuality + day * increaseRate;
+        if (day > 50 && increaseRate > 0) {
+            return 50;
+        }
+        int quality = initialQuality + day * increaseRate;
+        return Math.min(quality, 50);
     }
 }

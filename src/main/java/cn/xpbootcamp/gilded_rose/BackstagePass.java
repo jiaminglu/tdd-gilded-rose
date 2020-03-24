@@ -19,13 +19,12 @@ public class BackstagePass implements Item {
         if (day > stageDate) {
             return 0;
         }
-        int quality = initialQuality;
         if (day <= stageDate - 10) {
-            quality += 2 * (stageDate - day);
+            return initialQuality;
         }
-        if (day <= stageDate) {
-            quality += (stageDate - day);
+        if (day <= stageDate - 5) {
+            return initialQuality + 2 * (day - (stageDate - 10));
         }
-        return quality;
+        return initialQuality + 3 * (day - (stageDate - 5)) + 10;
     }
 }

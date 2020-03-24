@@ -14,6 +14,9 @@ public class Sulfuras implements Item {
 
     @Override
     public int qualityAtDay(int day) {
-        return quality;
+        if (quality < 0) {
+            return 0;
+        }
+        return Math.min(quality, 50);
     }
 }

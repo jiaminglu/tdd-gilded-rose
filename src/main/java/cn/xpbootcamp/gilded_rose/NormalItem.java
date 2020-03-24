@@ -19,10 +19,9 @@ public class NormalItem implements Item {
     @Override
     public int qualityAtDay(int day) {
         int quality = initialQuality - qualityDecreaseRate * day;
-        if (day <= sellIn) {
-            return quality;
+        if (day > sellIn) {
+            quality = quality - qualityDecreaseRate * (day - sellIn);
         }
-        quality = quality - qualityDecreaseRate * (day - sellIn);
         return Math.max(quality, 0);
     }
 }
